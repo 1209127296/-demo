@@ -1,0 +1,7 @@
+/* 设计图宽度375px */
+$rem: 15;
+
+/* px转rem */
+@function r($px) {
+    @return ($px / $rem)+rem;
+}

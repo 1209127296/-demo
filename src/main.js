@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import addVuePrototype from './addVuePrototype'
 
 Vue.config.productionTip = false
+addVuePrototype(Vue);
+console.log(Vue)
 
 /* eslint-disable no-new */
 new Vue({
