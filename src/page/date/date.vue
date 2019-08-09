@@ -1,23 +1,24 @@
 <template>
     <div class="date">
-        <Header :title="title"></Header>
-        <div class="input">
-            年份:
-            <input type="number" maxlength="4" v-model="checked_date.year" />
-            <br />月份:
-            <input type="number" maxlenth="2" name="lastname" v-model="checked_date.month" />
-            <br />格式：
-            <select v-model="checked_date.sort_way">
-                <option value="0">星期一开始</option>
-                <option value="1">星期天开始</option>
-            </select>
-        </div>
+        <Header class="header" :title="title"></Header>
         <Dater
+            class="dater"
             :year="checked_date.year"
             :month="checked_date.month"
             :sort_way="checked_date.sort_way"
             @changeTime="changeTime"
         ></Dater>
+        <div class="input">
+                <mt-field class="input-li" label="年份" :attr='{maxlength:4}' placeholder="请输入数字" type="number" v-model="checked_date.year"></mt-field>
+                <mt-field class="input-li" label="月份" :attr='{maxlength:2}' placeholder="请输入数字" type="number" v-model="checked_date.month"></mt-field>
+            <div class="input-li">
+                格式：
+                <select v-model="checked_date.sort_way">
+                    <option value="0">星期一开始</option>
+                    <option value="1">星期天开始</option>
+                </select>
+            </div>
+        </div>
     </div>
 </template>
 <script>

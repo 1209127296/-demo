@@ -1,9 +1,20 @@
 .home{
-  background-color: #28a;
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  .header{
+    flex:none;
+  }
+  .content{
+    flex:auto;
+    overflow: auto;
+  }
 }
 .list{
   padding-left: r(20);
   border-bottom: 1px solid #eee;
+  background-color: #28a;
   font-size : r(20);
   height:r(30);
   width:r(355);

@@ -1,13 +1,23 @@
 .date{
   display:flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  height: 100%;
+  width:100%;
   .input{
     flex:none;
     font-size:r(20);
     text-align: left;
+    .input-li{
+      border-bottom: 1px solid #eee;
+    }
   }
-  
+  .header{
+    flex:none
+  }
+  .dater{
+    flex:none
+  }  
 }
 
 .gray{
