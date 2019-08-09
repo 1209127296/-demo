@@ -1,18 +1,13 @@
-ul,li{
-  padding:0;
-  margin:0;
-  list-style:none
-}
 .home{
   background-color: #28a;
 }
 .list{
-  padding-left: 30px;
+  padding-left: r(20);
   border-bottom: 1px solid #eee;
-  font-size : 30px;
-  height:50px;
-  width:100%;
+  font-size : r(20);
+  height:r(30);
+  width:r(355);
   color: white;
-  line-height: 50px;
+  line-height: r(30);
   text-align: left;
 }
