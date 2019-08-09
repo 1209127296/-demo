@@ -2,6 +2,7 @@ export default {
   name: "date",
   data() {
     return {
+      title:"日历demo",
       checked_date: {
         year: new Date().getFullYear(),
         month: new Date().getMonth()+1,
@@ -9,9 +10,11 @@ export default {
       }
     }
   },
+  mounted(){
+    console.log(window.location.href)
+  },
   methods: {
     changeTime(year,month){
-      console.log(year,month)
       this.checked_date.year = year;
       this.checked_date.month = month;
     },

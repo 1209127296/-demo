@@ -1,5 +1,6 @@
 <template>
     <div class="date">
+        <Header :title="title"></Header>
         <div class="input">
             年份:
             <input type="number" maxlength="4" v-model="checked_date.year" />

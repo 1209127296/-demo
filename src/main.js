@@ -3,12 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import addVuePrototype from './js/addVuePrototype'
 import GlobalComponent from '@/js/GlobalComponent.js'
 
 
 Vue.config.productionTip = false;
 Vue.use(GlobalComponent);
+Vue.use(MintUI);
 addVuePrototype(Vue);
 
 /* eslint-disable no-new */

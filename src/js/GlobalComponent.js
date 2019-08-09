@@ -1,14 +1,13 @@
-import Dater from "@/components/Dater"
-
+import Dater from "@/components/Dater";
+import Header from "@/components/Header";
 let components = {
   Dater,
+  Header
 }
 
 export default {
   install(Vue) {
     for (let key in components) {
-      console.log(key)
-      console.log(components[key])
       Vue.component(key, components[key])
     }
   }

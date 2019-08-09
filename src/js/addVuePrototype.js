@@ -1,3 +1,4 @@
+import axios from 'axios'
 export default function(Vue){
   //通过屏幕宽度获取rem
   Vue.prototype.getRem = function(){
@@ -5,5 +6,14 @@ export default function(Vue){
     let rem_to_px = 25;
     document.getElementsByTagName("html")[0].style.height =  document.documentElement.clientHeight||document.body.clientHeight||window.innerHeight;
     document.getElementsByTagName("html")[0].style.fontSize = `${width/rem_to_px}px`;
+  }
+  Vue.prototype.$axios = axios;
+  Vue.prototype.canBack = function(){
+    let arr = window.location.href.split('/');
+    let return_data = true;
+    if(arr[arr.length] == 'home'){
+      return_data = false;
+    }
+    return return_data;
   }
 }
