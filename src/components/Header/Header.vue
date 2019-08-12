@@ -1,10 +1,14 @@
 <template>
     <mt-header :title="title">
         <span v-if="can_back" @click="backRouter" slot="left">
-            <mt-button icon="back"></mt-button>
+            <slot name="left">
+                <mt-button icon="back"></mt-button>
+            </slot>
         </span>
         <span slot="right">
-            <mt-button icon="more"></mt-button>
+            <slot name = "right">
+                <mt-button icon="more"></mt-button>
+            </slot>
         </span>
     </mt-header>
 </template>

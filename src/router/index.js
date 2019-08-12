@@ -25,7 +25,12 @@ export default new Router({
       name:'date',
       component: date,
       meta:{
-        title:"日历"
+        title:"日历",
+        right:{
+          click:"date",
+          isIcon:false,
+          text:"测试demo"
+        }
       }
     },
     {
@@ -33,7 +38,7 @@ export default new Router({
       name:'sweep',
       component: Sweep,
       meta:{
-        title:"扫雷"
+        title:"扫雷",
       }
     }
   ]
