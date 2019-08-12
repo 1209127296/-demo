@@ -2,16 +2,23 @@ export default {
   name: "date",
   data() {
     return {
-      title:"日历demo",
       checked_date: {
         year: new Date().getFullYear(),
         month: new Date().getMonth()+1,
         sort_way: 0 //排序方法，0代表1，2，3，4，5，6，7-----1代表7，1，2，3，4，5，6
-      }
+      },
+      is_sunday_begin:false    
     }
   },
-  mounted(){
-    console.log(window.location.href)
+  watch:{
+    is_sunday_begin(now){
+      if(now){
+        this.checked_date.sort_way = 1
+      }
+      else{
+        this.checked_date.sort_way = 0
+      }
+    }
   },
   methods: {
     changeTime(year,month){

@@ -1,8 +1,8 @@
 .date{
   display:flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  justify-content: space-around;
+  height: 0;
   width:100%;
   .input{
     flex:none;
@@ -11,9 +11,6 @@
     .input-li{
       border-bottom: 1px solid #eee;
     }
-  }
-  .header{
-    flex:none
   }
   .dater{
     flex:none

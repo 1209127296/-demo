@@ -1,6 +1,5 @@
 <template>
     <div class="date">
-        <Header class="header" :title="title"></Header>
         <Dater
             class="dater"
             :year="checked_date.year"
@@ -9,15 +8,23 @@
             @changeTime="changeTime"
         ></Dater>
         <div class="input">
-                <mt-field class="input-li" label="年份" :attr='{maxlength:4}' placeholder="请输入数字" type="number" v-model="checked_date.year"></mt-field>
-                <mt-field class="input-li" label="月份" :attr='{maxlength:2}' placeholder="请输入数字" type="number" v-model="checked_date.month"></mt-field>
-            <div class="input-li">
-                格式：
-                <select v-model="checked_date.sort_way">
-                    <option value="0">星期一开始</option>
-                    <option value="1">星期天开始</option>
-                </select>
-            </div>
+            <mt-field
+                class="input-li"
+                label="年份"
+                :attr="{maxlength:4}"
+                placeholder="请输入数字"
+                type="number"
+                v-model="checked_date.year"
+            ></mt-field>
+            <mt-field
+                class="input-li"
+                label="月份"
+                :attr="{maxlength:2}"
+                placeholder="请输入数字"
+                type="number"
+                v-model="checked_date.month"
+            ></mt-field>
+            <mt-switch v-model="is_sunday_begin">是否星期天开始</mt-switch>
         </div>
     </div>
 </template>
