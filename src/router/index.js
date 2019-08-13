@@ -18,7 +18,7 @@ export default new Router({
       component: Home,
       meta:{
         title:"首页"
-      }
+      },
     },
     {
       path:'/date',
@@ -29,7 +29,7 @@ export default new Router({
         right:{
           click:"date",
           isIcon:false,
-          text:"测试demo"
+          text:"切换格式"
         }
       }
     },

@@ -1,2 +1,2 @@
-import Header from './Header.vue'
-export default Header;
+import Sweep from './Sweep.vue'
+export default Sweep;

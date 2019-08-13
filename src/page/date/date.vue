@@ -24,7 +24,6 @@
                 type="number"
                 v-model="checked_date.month"
             ></mt-field>
-            <mt-switch v-model="is_sunday_begin">是否星期天开始</mt-switch>
         </div>
     </div>
 </template>
