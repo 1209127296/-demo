@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import HeadRightMethods from "./js/HeadRightMethods";
 export default {
     name: "App",
     data() {
@@ -33,9 +32,7 @@ export default {
     mounted() {
         this.$getRem();
         window.onresize = this.$getRem;
-        console.log(HeadRightMethods);
     },
-    // methods: HeadRightMethods,
     methods:{
         rightClick(){
             this.$refs.route.rightClick();
