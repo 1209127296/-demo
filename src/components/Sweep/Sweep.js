@@ -1,5 +1,5 @@
 export default {
-  name: "Header",
+  name: "Sweep",
   props: {
     title: {
       type: String,

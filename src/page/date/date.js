@@ -21,6 +21,9 @@ export default {
     }
   },
   methods: {
+    rightClick(){
+      this.updateSortWay();
+    },
     changeTime(year,month){
       this.checked_date.year = year;
       this.checked_date.month = month;
@@ -42,7 +45,7 @@ export default {
       this.checked_date.year=year
     },
     updateSortWay(sort_way=this.checked_date.sort_way){
-      this.checked_date.sort_way = sort_way;
+      this.checked_date.sort_way = sort_way==0?1:0;
     }
   }
 }

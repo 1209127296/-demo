@@ -2,13 +2,13 @@
     <div id="app">
         <Header
             class="header"
-            v-if="$client()!='pc'"
+            v-if="$client()!='pc'&&$route.meta.title"
             :title="$route.meta.title"
             :can_back="$canBack()"
         >
             <span
                 v-if="$route.meta.right"
-                @click="this[click]"
+                @click="rightClick"
                 slot="right"
                 :class="{'iconfont':$route.meta.right.isIcon}"
                 v-html="$route.meta.right.text"
@@ -26,26 +26,21 @@ export default {
     name: "App",
     data() {
         return {
-            //存储路由中的内容，用于修改
-            ref_route: {},
             click: "",
             text: "&#xe600;",
-            transitionName: 'slide-left'
         };
-    },
-    beforeRouteUpdate(to, from, next) {
-        const toDepth = to.path.split("/").length;
-        const fromDepth = from.path.split("/").length;
-        this.transitionName =
-            toDepth < fromDepth ? "slide-right" : "slide-left";
-        next();
     },
     mounted() {
         this.$getRem();
         window.onresize = this.$getRem;
         console.log(HeadRightMethods);
     },
-    methods: HeadRightMethods,
+    // methods: HeadRightMethods,
+    methods:{
+        rightClick(){
+            this.$refs.route.rightClick();
+        }
+    },
     watch: {
         $route(to,from) {
             this.ref_route = this.$refs.route;
@@ -89,12 +84,8 @@ body,
         height: 0 !important;
     }
 }
-.transition {
-    transition: all .8s cubic-bezier(.55,0,.1,1);
-}
-
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s ease;
+  transition: opacity .3s ease;
 }
 .fade-enter, .fade-leave-active {
   opacity: 0;

@@ -4,9 +4,9 @@
     </div>
 </template>
 <script>
-import Header from "./Header.js";
-export default Header;
+import Sweep from "./Sweep.js";
+export default Sweep;
 </script>
 <style scoped  lang="scss">
-@import "/Header";
+@import "/Sweep";
 </style>

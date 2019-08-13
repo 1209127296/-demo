@@ -1,0 +1,17 @@
+.popup{
+    width:100%;
+}
+.btn-box{
+    display:flex;
+    justify-content: space-between;
+    padding: 0 r(10);
+    margin-bottom: r(5);
+    height: r(35);
+    .box{
+        flex: none;
+    }
+}
+.mint-button{
+    font-size: r(15);
+    height: 100%;
+}

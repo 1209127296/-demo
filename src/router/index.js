@@ -39,6 +39,11 @@ export default new Router({
       component: Sweep,
       meta:{
         title:"扫雷",
+        right:{
+          click:"sweep",
+          isIcon:"true",
+          text:"&#xe61a;"
+        }
       }
     }
   ]

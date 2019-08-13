@@ -1,8 +1,12 @@
 import Dater from "@/components/Dater";
 import Header from "@/components/Header";
+import Popup from "@/components/Popup";
+import Sweep from "@/components/Sweep";
 let components = {
   Dater,
-  Header
+  Header,
+  Popup,
+  Sweep
 }
 
 export default {
