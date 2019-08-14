@@ -45,9 +45,6 @@ export default {
                 this.click = to.meta.right.click;
                 this.text = to.meta.right.text;
             }
-            const toDepth = to.path.split('/').length
-            const fromDepth = from.path.split('/').length
-            this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
         }
     }
 };
