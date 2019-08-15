@@ -4,9 +4,9 @@ export default function (Vue) {
   Vue.prototype.$getRem = function () {
     let width = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
     let rem_to_px = 25;
-    if(Vue.$client()=='pc'){
+    if (Vue.$client() == 'pc') {
       let appvue = document.getElementById('app');
-      width = width>750?750:width;
+      width = width > 750 ? 750 : width;
       appvue.style.cssText = `width: ${width}px; margin: 0 auto;`;
     }
     document.getElementsByTagName("html")[0].style.fontSize = `${width / rem_to_px}px`;
@@ -35,10 +35,52 @@ export default function (Vue) {
     } else {
       return_data = 'pc'
     }
-    Vue.$client = function(){
+    Vue.$client = function () {
       return return_data;
     }
     return return_data;
   }
 
+  //深拷贝
+  Vue.prototype.$deepCopy = function (obj) {
+    let return_data = obj;
+    if (typeof (obj) == "object" && obj[key] !== null) {
+      let result = Array.isArray(obj) ? [] : {};
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          if (typeof obj[key] === 'object' && obj[key] !== null) {
+            result[key] = this.$deepCopy(obj[key]);   //递归复制
+          } else {
+            result[key] = obj[key];
+          }
+        }
+      }
+      return_data = result;
+    }
+    return return_data;
+  }
+
+  //两个基本对象之间是否相等，时间对象等不做考虑
+  window.compair =function(obj1,obj2){
+    let return_data = false;
+    if(obj1==obj2){
+      return_data = true;
+    }
+    else if((typeof(obj1)!="object"||typeof(obj2)!="object")||Array.isArray(obj1) != Array.isArray(obj2)){
+      //不做处理
+    }else{
+      //两个同为数组或同为对象
+      return_data = true;
+      for (var key in obj1) {
+        if(compair(obj1[key],obj2[key])){
+          continue;
+        }
+        else{
+          return_data = false;
+          break;
+        }
+      }
+    }
+    return return_data;
+  }
 }

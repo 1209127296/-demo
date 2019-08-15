@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/page/home/home.vue'
 import date from '@/page/date/date.vue'
 import Sweep from '@/page/sweep/sweep.vue'
+import AutoInput from '@/page/autoInput/autoInput.vue'
 
 Vue.use(Router)
 
@@ -27,7 +28,6 @@ export default new Router({
       meta:{
         title:"日历",
         right:{
-          click:"date",
           isIcon:false,
           text:"切换格式"
         }
@@ -40,7 +40,18 @@ export default new Router({
       meta:{
         title:"扫雷",
         right:{
-          click:"sweep",
+          isIcon:"true",
+          text:"&#xe61a;"
+        }
+      }
+    },
+    {
+      path:'/autoInput',
+      name:'autoInput',
+      component: AutoInput,
+      meta:{
+        title:"自动化表单",
+        right:{
           isIcon:"true",
           text:"&#xe61a;"
         }

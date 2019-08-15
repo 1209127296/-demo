@@ -7,7 +7,7 @@
             :can_back="$canBack()"
         >
             <span
-                v-if="$route.meta.right"
+                v-if="$route.meta.right&&$route.meta.right.text"
                 @click="rightClick"
                 slot="right"
                 :class="{'iconfont':$route.meta.right.isIcon}"
