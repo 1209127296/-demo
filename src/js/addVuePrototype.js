@@ -69,17 +69,24 @@ export default function (Vue) {
     else if((typeof(obj1)!="object"||typeof(obj2)!="object")||Array.isArray(obj1) != Array.isArray(obj2)){
       //不做处理
     }else{
-      //两个同为数组或同为对象
       return_data = true;
-      for (var key in obj1) {
-        if(compair(obj1[key],obj2[key])){
-          continue;
-        }
-        else{
-          return_data = false;
-          break;
+      //两个同为数组或同为对象
+      //1：如果同为数组
+      if(Object.keys(obj1).length != Object.keys(obj2).length){
+        return_data = false;
+      }
+      if(return_data){
+        for (var key in obj1) {
+          if(compair(obj1[key],obj2[key])){
+            continue;
+          }
+          else{
+            return_data = false;
+            break;
+          }
         }
       }
+      
     }
     return return_data;
   }

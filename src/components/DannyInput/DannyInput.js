@@ -6,35 +6,42 @@ export default {
       default: "input",
     },
     defaultVal: {
-      type: [String,Array,Object,Number],
+      type: [String, Array, Object, Number],
       default: "默认值",
     },
-    list: {
-      type: Array,
-      default: [],
+    detail: {
+      type: String,
+      default: ""
     },
-    index: {
-      type: Number,
-      default: 0,
+    canChange: {
+      type: Boolean,
+      default: true,
     },
     privates: {
       type: Object,
       default: {}
     },
   },
-  data(){
-    return{
+  data() {
+    return {
       showNumBoard: false,
       valNumBoard: ""
     }
   },
- methods:{
-   input(){
-     switch(this.type){
-       case "number" :
-         this.$emit("openNumBoard");
-         break;
-     }
-   }
- }
+  methods: {
+    input() {
+      if(this.canChange){
+        switch (this.type) {
+          case "text":{
+            if(this.detail == "number" || this.detail == "numberWithPoint"){
+              this.$emit("openNumBoard");
+            }
+            break;
+          }
+            
+        }
+      }
+      
+    }
+  }
 }

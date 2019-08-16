@@ -1,12 +1,6 @@
 <template>
     <div>
-        <div v-if="type=='number'">
-            <!-- <mt-field
-                label="else.title"
-                placeholder="else.placeholder"
-                v-model="defaultVal"
-                @touchstart.native.stop="input"
-            ></mt-field>-->
+        <div v-if="type=='text'" class="input-box">
             <van-field
                 readonly
                 clickable
