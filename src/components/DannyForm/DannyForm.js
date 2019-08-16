@@ -49,6 +49,12 @@ export default {
     }
   },
   methods: {
+    change(val,index){
+      console.log(val,index)
+      this.numBoardData = this.flag[index];
+      this.numBoardData.defaultVal = val
+      this.changePoint();
+    },
     //深拷贝以修改指针执行watch
     changePoint() {
       //深拷贝以执行watch

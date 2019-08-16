@@ -22,7 +22,7 @@ export default {
           canChange: true,
           privates:{
             title:"数字",
-            placeholder:"请输入账号",
+            placeholder:"请输入数字",
             list: [],
             maxLength:15
           }
@@ -34,8 +34,19 @@ export default {
           canChange: true,
           privates:{
             title:"含.数字",
-            placeholder:"请输入密码",
+            placeholder:"请输入含.数字",
             list: [],
+            maxLength:15
+          }
+        },
+        {
+          type: "text",
+          detail:"string",
+          defaultVal: "",
+          canChange: true,
+          privates:{
+            title:"字符串",
+            placeholder:"请输入字符串",
             maxLength:15
           }
         },
@@ -51,6 +62,7 @@ export default {
     change(val){
       console.log("最顶部组件值改变")
       this.list = val;
+      console.log(this.list)
     }
   }
 }

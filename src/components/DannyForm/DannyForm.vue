@@ -7,7 +7,9 @@
                 :canChange="item.canChange"
                 :detail="item.detail"
                 :privates="item.privates"
+                :index="index"
                 @openNumBoard="openNumBoard(index)"
+                @change="change"
             ></DannyInput>
         </div>
         <van-number-keyboard
