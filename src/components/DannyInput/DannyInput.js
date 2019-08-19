@@ -9,8 +9,8 @@ export default {
       type: [String, Array, Object, Number],
       default: "默认值",
     },
-    index:{
-      type:[Number,String],
+    index: {
+      type: [Number, String],
       default: 0
     },
     detail: {
@@ -33,25 +33,36 @@ export default {
     }
   },
   methods: {
-    print(val){
-      this.input(val,"print");
+    //text
+    print(val) {
+      this.showNumBoard = false;
+      this.input(val, "print");
     },
-    input(val,flag) {
-      if(this.canChange){
+    closeNumBoard() {
+      if (this.type == "text" && this.detail == "string") {
+        this.$emit("closeNumBoard");
+      }
+    },
+    input(val, flag) {
+      if (this.canChange) {
         switch (this.type) {
-          case "text":{
-            if(this.detail == "number" || this.detail == "numberWithPoint"){
+          case "text": {
+            if (this.detail == "number" || this.detail == "numberWithPoint") {
               this.$emit("openNumBoard");
             }
-            else if(flag=="print"){
-              this.$emit("change",typeof(val)=="object"?"":val,this.index);
+            else if (flag == "print") {
+              this.$emit("change", typeof (val) == "object" ? "" : val, this.index);
             }
             break;
           }
-            
+
         }
       }
-      
+    },
+    //check
+    openPicker(){
+      console.log("openPicker")
+      this.$emit("openPicker");
     }
   }
 }

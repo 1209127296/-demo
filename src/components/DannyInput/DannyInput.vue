@@ -10,6 +10,19 @@
                 :maxlength="privates.maxLength"
                 @touchstart.native.stop="input"
                 @input="print"
+                @click.native="closeNumBoard"
+            >
+            </van-field>
+        </div>
+        <div v-if="type=='check'" class="input-box">
+            <van-field
+                readonly
+                clickable
+                :label="privates.title"
+                :placeholder="privates.placeholder"
+                :value="defaultVal[Object.keys(defaultVal)[0]]"
+                :maxlength="privates.maxLength"
+                @click.native="openPicker"
             >
             </van-field>
         </div>
