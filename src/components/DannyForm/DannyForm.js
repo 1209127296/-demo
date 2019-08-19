@@ -98,7 +98,7 @@ export default {
       this.nowIndex = index;
       this.getPickListByList();
     },
-    getPickListByList(time = 1,) {
+    getPickListByList(time = 1) {
       //获取key的长度以辨别有几列
       let col = Object.keys(this.nowPickerData.defaultVal)[0]
       let colLen = col.length / 2;
@@ -108,7 +108,7 @@ export default {
         this.columns[time - 1].values = new Array();
         for (let key in flag) {
           let [prefix, suffix] = [key.substr(0, time * 2-2), key.substr(time * 2)];     
-          if (prefix == col.substr(0, time * 2-2)&&(colLen == time?true:parseInt(suffix)==0)) {
+          if (prefix == col.substr(0, time * 2-2)&&(colLen == time?parseInt(key.substr(time * 2-2))!=0:parseInt(suffix)==0)) {
             this.columns[time - 1].values.push(flag[key])
           }
         }
@@ -189,9 +189,14 @@ export default {
           continue;
         }
         else{
+          alert(1111)
           let [key,value]=["",""];
           for(let j=1;j<saveKey.length-i;j++){
-            key = saveKey[i].substr(0,i*2)+"01"
+            key = saveKey[i].substr(0,i*2)+"01";
+            console.log(key);
+          }
+          if(key == ""){
+            key = saveKey[saveKey.length-1]
           }
           for(let j in flag){
             if(j == key){
@@ -199,9 +204,12 @@ export default {
               break;
             }
           }
+          //将value格式化
           this.nowPickerData.defaultVal = {};
           this.nowPickerData.defaultVal[key]=value;
+
           time = i;
+          this.getPickListByList()
           console.log(this.nowPickerData.defaultVal,time)
           break;
         }
