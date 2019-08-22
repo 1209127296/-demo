@@ -25,6 +25,7 @@
         />
         <van-popup v-model="showPicker" position="bottom">
             <van-picker
+                ref="picker"
                 show-toolbar
                 :columns="columns"
                 @cancel="showPicker = false"

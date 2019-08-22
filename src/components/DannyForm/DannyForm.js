@@ -98,6 +98,28 @@ export default {
       this.nowIndex = index;
       this.getPickListByList();
     },
+    getPickAllValueByKey(key){
+      let len = key.length/2;
+      let returnData = [];
+      for(let i=0;i<len;i++){
+        let flagKey = key.substr(0,(i+1)*2);
+        for(let j = flagKey.length; j<len*2; j++){
+          flagKey = `${flagKey}0`
+        }
+        returnData.push(this.getPickOneValueByKey(flagKey));
+      }
+      return returnData.join(" ");
+    },
+    getPickOneValueByKey(key){
+      let [list,returnData] = [this.nowPickerData.privates.list,""];
+      for(let k in list){
+        if(k == key){
+          returnData=list[k];
+          break;
+        }
+      }
+      return returnData;
+    },
     getPickListByList(time = 1) {
       //获取key的长度以辨别有几列
       let col = Object.keys(this.nowPickerData.defaultVal)[0]
@@ -108,7 +130,7 @@ export default {
         this.columns[time - 1].values = new Array();
         for (let key in flag) {
           let [prefix, suffix] = [key.substr(0, time * 2-2), key.substr(time * 2)];     
-          if (prefix == col.substr(0, time * 2-2)&&(colLen == time?parseInt(key.substr(time * 2-2))!=0:parseInt(suffix)==0)) {
+          if (prefix == col.substr(0, time * 2-2)&&(colLen == time?parseInt(key.substr(time * 2-2))!=0:(parseInt(suffix)==0)&&parseInt(key.substr(time*2-2))!=0)) {
             this.columns[time - 1].values.push(flag[key])
           }
         }
@@ -118,7 +140,7 @@ export default {
         else {
           this.updatePickListElse();
           this.updatePickListElseDef();
-          console.log(this.columns)
+          console.log(`列表：`,this.columns)
         }
       }
     },
@@ -148,9 +170,8 @@ export default {
         }
       }
     },
-    pickerConfirm(val,isChange){
-      console.log(val,isChange)
-      let value = val.join("");
+    pickerConfirm(val){
+      let value = val.join(" ");
       let key = "";
       let flag = this.nowPickerData.privates.list;
       for(let i in flag){
@@ -161,9 +182,7 @@ export default {
       }
       this.nowPickerData.defaultVal={};
       this.nowPickerData.defaultVal[key]=value;
-      if(isChange!="true"){
-        this.pickerClose();
-      }
+      this.pickerClose();
     },
     pickerClose(){
       this.flag = this.$deepCopy(this.flag);
@@ -171,7 +190,6 @@ export default {
     },
     pickerChange(picker,value){
       // value与defaultVal进行比较
-      console.log(value);
       let flag = this.nowPickerData.privates.list;
       let saveKey = [];
       let time = 0;
@@ -184,16 +202,14 @@ export default {
         }
       }
       // 判断哪一列发生变化
-      for(let i=saveKey.length-1; i>0; i++){
-        if(saveKey[i].substr(0,i*2)==saveKey[i-1]){
+      for(let i=saveKey.length-1; i>0; i--){
+        if(saveKey[i].substr(0,i*2)==saveKey[i-1].substr(0,i*2)){
           continue;
         }
         else{
-          alert(1111)
-          let [key,value]=["",""];
-          for(let j=1;j<saveKey.length-i;j++){
-            key = saveKey[i].substr(0,i*2)+"01";
-            console.log(key);
+          let [key,value]=[saveKey[i-1].substr(0,i*2),""];
+          for(let j=0;j<saveKey.length-i;j++){
+            key+= "01";
           }
           if(key == ""){
             key = saveKey[saveKey.length-1]
@@ -206,11 +222,10 @@ export default {
           }
           //将value格式化
           this.nowPickerData.defaultVal = {};
-          this.nowPickerData.defaultVal[key]=value;
+          this.nowPickerData.defaultVal[key]=this.getPickAllValueByKey(key);
 
           time = i;
-          this.getPickListByList()
-          console.log(this.nowPickerData.defaultVal,time)
+          this.getPickListByList(i)
           break;
         }
       }
